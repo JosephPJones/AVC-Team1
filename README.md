@@ -7,13 +7,13 @@ Victoria University, engineering 101 AVC project
 **OBJECTIVE: _Complete Quadrant 1_**
 
 TASKS:
-- [ ]Ronnie: Finalise AVC plan/ team roles. Take notes for progress report;
-- [ ]Joseph: Update github (and any extra github work needed);
-- [ ]Tim: Finalise design of chassis. (assist in CAD design);
-- [ ]Jason: Finalise CAD design;
-- [ ]Ben: Develop code for networking (if unfinished);
-- [ ]Hayden: Develop code for movement in quadrant 1. (finalise sensor code if necessary);
-- [ ]**All**: Record results and discuss.
+- [ ] Ronnie: Finalise AVC plan/ team roles. Take notes for progress report;
+- [ ] Joseph: Update github (and any extra github work needed);
+- [ ] Tim: Finalise design of chassis. (assist in CAD design);
+- [ ] Jason: Finalise CAD design;
+- [ ] Ben: Develop code for networking (if unfinished);
+- [ ] Hayden: Develop code for movement in quadrant 1. (finalise sensor code if necessary);
+- [ ] **All**: Record results and discuss.
 
 **19th May
 OBJECTIVE: _Complete Quadrant 2_**
