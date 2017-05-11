@@ -10,4 +10,12 @@ int adc_reading_right;
 while(true){
 adc_reading_left=read_analog(0);
 adc_reading_right=read_analog(1);
-if(adc_reading_left=
+while((adc_reading_left=200)&&(adc_reading_right=200){
+set_motor(1,175);
+set_motor(2.175);
+sleep1(0,500000);
+sleep2(0,500000);
+
+return0;
+}
+
