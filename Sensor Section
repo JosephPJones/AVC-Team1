@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <time.h>
+#include "E101.h" 
+
+int main(){
+init(){
+int adc_reading_left;
+int adc_reading_right;
+
+while(true){
+adc_reading_left=read_analog(0);
+adc_reading_right=read_analog(1);
+if(adc_reading_left=
