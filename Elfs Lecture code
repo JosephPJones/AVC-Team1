@@ -1,0 +1,100 @@
+take_picture();
+int error = 0;
+float kp = 0.5;
+int proportional_signal = 0;
+int i, w, s;
+for(i=0, i<320, i++){
+w = get_pixel(i,120,3);
+if(w>127){s=1;};
+else{s=0;};
+error = error + (i-160) * s;
+}
+proportional_signal = error * kp;
+
+--------------------------------------------------------------------------------------
+
+set_motor(1, proportional_signal);
+set_motor(2, -1 * proportional_signal);
+
+--------------------------------------------------------------------------------------
+
+//assume relevant import statements are here
+int main(){
+//for each frame
+take_picture();
+int error = 0;
+int number_of_white_pixels = 0;
+int proportional_signal = 0;
+float kp = 0.5;
+int i, w, s; \\
+for(i=0, i<320, i++){ \\loop across image
+w = get\_pixel(i,120,3); \\get pixel colour
+if(w>127){ \\check if pixel is black or white
+s=1;} else{s=0;}
+error = error + (i-160) * s; \\update error value
+}
+
+---------------------------------------------------------------------------------------
+
+//loop across image from part1
+...
+}
+proportional_signal = error * kp;
+if (number_of_white_pixels > 0){
+v_left =  70 + proportional_signal;
+v_right = 70 - proportional_signal;
+set_motor(1, v_left);
+set_motor(2, v_right);}
+else{
+v_left =  ??;
+v_right =  ??;
+set_motor(1, v_left);
+set_motor(2, v_right);}
+return 0;}
+
+---------------------------------------------------------------------------------------
+
+int total_error;
+float ki = 0.05;
+int integral_signal = 0;
+//frame loop
+int error;
+total_error = total_error + error;
+integral_signal = total_error
+*
+ki;
+//set motor speeds from sum of PID signals
+
+---------------------------------------------------------------------------------------
+
+int main(){
+float kd = 0.5;
+int derivative_signal = 0;
+int error;
+int previous_error = 0;
+//frame loop calculating error
+error_diff = error-previous_error;
+derivative_signal = error_diff
+*
+kd;
+previous_error = error;
+//set error for next loop
+//set motor speeds from sum of PID signals
+return 0;}
+
+----------------------------------------------------------------------------------------
+
+int main(){
+float kd = 0.5;
+int derivative_signal = 0;
+int error;
+//frame loop calculating error from middle line
+//frame loop calculating future error from 180 line
+error_diff = future_error-error;
+derivative_signal = error_diff
+*
+kd;
+//set motor speeds from sum of PID signals
+return 0;}
+
+-----------------------------------------------------------------------------------------
