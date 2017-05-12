@@ -1,1 +1,46 @@
-
+#include <stdio.h>
+#include <math.h>
+#include <algorithm>
+#include "E101.h"
+using namespace std;
+float err;
+void updateCamera(int row){
+	int maxBright = 0;
+	int minBright = 0;
+	int pixel[320];
+	for(int step = 0; step < 320; step++){
+		char p = get_pixel(row, step,3);
+		maxBright = max(maxBright, (int)p);
+		minBright = min(minBright, (int)p);
+		pixel[step] = p;
+	}
+	int threshold = (maxBright - minBright) / 2;	
+	int whitePoints = 0;
+	int sum = 0;
+	for(int step = 0; step < 320; step++){
+		if (pixel[step] > threshold){
+			set_pixel(row, step, 0, 128, 128);
+			whitePoints++;
+			sum += step;
+		}
+	}
+	err = 0;
+	if (whitePoints > 0){err = ((sum/whitePoints) - 160.0)/160.0;}
+}
+void setMotors(float direction, int power){
+	set_motor(1, power * min(1 + (2 * direction), (float)1));
+	set_motor(2, power * min(1 - (2 * direction), (float)1));
+	printf("Err: %f lc: %f rc: %f\n", err,  min(1 + (2 * direction), (float)1), min(1 - (2 * direction), (float)1));
+}
+int main(){	
+	open_screen_stream();
+	for(int i = 0; i < 100; i++){
+		take_picture();
+		updateCamera(120);
+		update_screen();
+		setMotors(err, 254);
+		sleep1(0,100000);
+	}
+	stop(0);
+	return 0;
+}
