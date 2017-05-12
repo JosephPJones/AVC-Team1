@@ -3,8 +3,10 @@
 #include <algorithm>
 #include "E101.h"
 using namespace std;
-float err;
-void updateCamera(int row){
+int whitepoints;
+int lineCenter;
+
+float updateCamera(int row){
 	int maxBright = 0;
 	int minBright = 0;
 	int pixel[320];
@@ -24,21 +26,30 @@ void updateCamera(int row){
 			sum += step;
 		}
 	}
-	err = 0;
-	if (whitePoints > 0){err = ((sum/whitePoints) - 160.0)/160.0;}
+	int lineCenter = 0;
+	if (whitePoints > 0){lineCenter = ((sum/whitePoints) - 160.0)/160.0;}
 }
 void setMotors(float direction, int power){
+	direction = min(max(direction, -1), 1);
 	set_motor(1, power * min(1 + (2 * direction), (float)1));
 	set_motor(2, power * min(1 - (2 * direction), (float)1));
-	printf("Err: %f lc: %f rc: %f\n", err,  min(1 + (2 * direction), (float)1), min(1 - (2 * direction), (float)1));
+	printf("kd: %f lc: %f rc: %f\n", kp,  min(1 + (2 * direction), (float)1), min(1 - (2 * direction), (float)1));
 }
 int main(){	
+	float kd;
+	float ki;
+	float kd;
+	int power = 128;
 	open_screen_stream();
 	for(int i = 0; i < 100; i++){
 		take_picture();
 		updateCamera(120);
 		update_screen();
-		setMotors(err, 254);
+		kp = (lineCenter-160)/160;
+		int firstPoint = lineCenter;
+		updateCamera(60);
+		kd = (lineCenter - firstPoint - 160)/160;
+		setMotors(1.0*kp + 1.0*ki - 1.0*kd, 128);
 		sleep1(0,100000);
 	}
 	stop(0);
