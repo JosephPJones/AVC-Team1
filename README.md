@@ -19,7 +19,7 @@ TASKS:
 OBJECTIVE: _Complete Quadrant 2_**
 
 TASKS:
-- [ ] Ronnie: Complete  progress report, (check team member progress).
+- [ ] Ronnie: Complete  progress report (record testing results).
 - [ ] Joseph: Continue github documentation of code.
 - [ ] Tim: Finalise assembly of chassis.
 - [ ] Jason: Assist in assembly.
