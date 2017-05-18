@@ -13,10 +13,10 @@ int main (){
    //connects to server with the ip address 192.168.1.2
    connect_to_server("192.168.1.2", 1024);
    //sends a message to the connected server
-   send_to_server("Hello server");
+   send_to_server("Please");
    //receives message from the connected server
    char message[24];
-   receive_from_server(message); //this may be buggy!
+   int receive_from_server(char message[24]); //this may be buggy!
    printf("%s", message);
    send_to_server(message);
    
