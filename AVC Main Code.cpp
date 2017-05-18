@@ -7,6 +7,7 @@ int whitePoints;
 float lineCenter;
 float kp;
 float kd;
+float do_network;
 int quadrant = 2;
 
 void updateCamera(int row){
