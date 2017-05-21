@@ -8,7 +8,7 @@
 
 TASKS:
 - [ ] Ronnie: Finalise AVC plan/ team roles. Take notes for progress report;
-- [x] Joseph: Update github (and any extra github work needed);
+- [x] Joseph: Update github (and assist with movement code);
 - [x] Tim: Finalise design of chassis. (assist in CAD design);
 - [x] Jason: Finalise CAD design;
 - [x] Ben: Develop code for networking (if unfinished);
@@ -20,7 +20,7 @@ OBJECTIVE: _Complete Quadrant 2_**
 
 TASKS:
 - [ ] Ronnie: Complete  progress report (record testing results).
-- [ ] Joseph: Continue github documentation of code.
+- [ ] Joseph: Continue github documentation of code (help hayden).
 - [ ] Tim: Finalise assembly of chassis.
 - [ ] Jason: Assist in assembly.
 - [ ] Ben: Design code for functions to work with each other.
