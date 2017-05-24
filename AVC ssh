@@ -1,0 +1,7 @@
+ls
+cd Desktop
+ls
+cd noot.cpp
+g++ -O exec noot.cpp -le101
+sudo ./exec
+nano noot.cpp
