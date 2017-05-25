@@ -6,10 +6,41 @@ int main(){
 init(){
 int adc_reading_left;
 int adc_reading_right;
+int kp;
+int sum=0;
 
 while(true){
-adc_reading_left=read_analog(0);
-adc_reading_right=read_analog(1);
+left=read_analog(0);
+right=read_analog(1);
+center=read_analog(2);
+
+int total_error = 0;
+int current_error = 0;
+int ki = 0.001;
+int integral_signal;
+for (int i=0, i<200 , i++){
+error_left = (i-100)*left;
+error_right = (i-100)*right;
+current_error = current_error + error;
+}
+sleep1(0,100000)
+total_error = total_error+current_error;
+integral_signal = total_error*ki;
+printf("Integral signal is: %d", integral_signal );
+set_motor(1, integral_signal);
+
+
+}
+if(!(left==right)){
+
+}
+
+proportional_signal = error*kp;
+
+printf("Proportional signal is: %d", proportional_signal );
+
+set_motor(1, (proportional_signal/(160*1*kp))*255);
+
 while((adc_reading_left=200)&&(adc_reading_right=200){
 set_motor(1,175);
 set_motor(2.175);
