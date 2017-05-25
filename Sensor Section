@@ -8,29 +8,46 @@ int adc_reading_left;
 int adc_reading_right;
 int kp;
 int sum=0;
+int ki;
 
 while(true){
 left=read_analog(0);
 right=read_analog(1);
 center=read_analog(2);
 
+//Proportional Signal
+int current_error = 0;
+int kp = 0.5;
+int proportional_signal;
+for (i=0, i<200, i++){
+prop_error_left = (i-100)*left;
+prop_error_right = (i-100)*right;
+prop_error_center = (i-100)*center;
+prop_current_error = prop_current_error +prop_error_left+prop_error_right+ prop_error_center;
+}
+proportional_signal = (prop_error_left+prop_error_right+ prop_error_center)*kp;
+printf("Proportional signal is: %d", proportional_signal );
+
+//integral signal
 int total_error = 0;
 int current_error = 0;
 int ki = 0.001;
 int integral_signal;
 for (int i=0, i<200 , i++){
-error_left = (i-100)*left;
-error_right = (i-100)*right;
-current_error = current_error + error_left + error+right;
+inte_error_left = (i-100)*left;
+inte_error_right = (i-100)*right;
+inte_error_center = (i-100)*center;
+inte_current_error = current_error + error_left + error_right + error_center;
 }
 sleep1(0,100000);
 sleep2(0,100000);
 total_error = total_error+current_error;
 integral_signal = total_error*ki;
 printf("Integral signal is: %d", integral_signal );
+total_signal= proportional_signal+ integral_signal;
 
-set_motor(1, integral_signal);
-set_motor(2, integral_signal);
+set_motor(1, total_signal);
+set_motor(2, total_signal);
 }
 // if(!(left==right)){
 
