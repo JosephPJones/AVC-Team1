@@ -1,0 +1,34 @@
+Main loop{
+	While quadrant 4 is incomplete:{
+		Check which quadrant robot is currently in and execute the related function
+	}
+}
+Quadrant one{
+	Drive along line using followLine function until in front of gate
+	Stop at gate and send signal to arduino to open gate
+	Wait for clear path
+	Update current quadrant to quadrant 2
+}
+Quadrant two{
+	Use followLine function until wide line is detected
+	Update current quadrant to quadrant 3
+}
+Quadrant three{
+	Use followLine until intersection is detected
+	If a right turn is availible, take it
+	Otherwise continue down line using followLine function
+	Repeat until red patch signalling end of quadrant 3 detected
+	Update curent quadrant to qudadrant four
+}
+Quadrant four{
+Take readings from diagonal IR sensors to find position (sum) and angle (difference) in corridor
+Adjust position according to readings, aiming to be going parallel to the wall to its right
+Continue until red patch detected with camera.
+Wait for gate to close
+Wait for gate to open and continue with previous code until finish line detected
+stop	
+}
+	Follow Line{
+	Use camera to detect position and angle of line in front
+Set turning speed based on horizontal position of line and motor power based on straightness of line
+}
